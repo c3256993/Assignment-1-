@@ -1,6 +1,9 @@
-#include <...etc
+#include<stdio.h>
 
-fd
-f
-sdaf
-sfd
+int main()
+{
+    printf("Do the goddamn assignment");
+    
+    return 0;
+    
+}
