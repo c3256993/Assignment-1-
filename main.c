@@ -2,28 +2,24 @@
 
 int main()
 {
-    int i;
-    int k=3;
-    char strOUT[50];
-    char letter;
-    
-    
-    char strIN[] = "TRY TO ENCRYPT THIS";
-    
-    
-    for (i=0; strIN[i] !=0; i++)
-    {
-      letter = strIN[i];  
+	char str[] = "ben"; //hardcoded thing
+	int i=0;
+	int num[i];
+	int k=0;
+	
+	while (i < 3 ){
+	    
+	    num[i]= (int)str[i];
+	    num[i] = (num[i] + k)%26 ;
+	    
+	    num[i] = num[i] + 65;
+	    printf("%c ", num[i]);
+	    
+	    i++;
     }
+	
+	
 
-    if (letter >= 'a' && letter <= 'b')
-    {
-        
-    }
-    //srtOUT=(strIN+k)%26;
-   
-   printf("%s\n", strOUT);
-    
-    return 0;
-    
+return 0;
+
 }
