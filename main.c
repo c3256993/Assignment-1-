@@ -4,38 +4,23 @@
 int main()
 
 {
-	//FILE*input;
 	
-	char str[]= "BEN"; //hardcoded thing
-	int i=0;// j=0;
+	char str[]= "BENDAY"; //hardcoded thing
+	int i=0;
 	int num[i];
-	int k=0;
+	int k=2;
 	
-	/*double input_status;
+	// on ascii the capital A starts from 65 and goes until 90
 	
-	input = fopen("U:\\ENGG1003\\2019input", "r");
-	if (input == 0){
-	    perror("fopen()");
+	while (str[i] != '\0' ) {
 	    
-	   }
-	
-	do{
-	    input_status = fscanf(input, "%s", str); //scans the name to the thing
-	    j++;
-	} while (input_status != 0);
-	*/
-	
-	while (num[i] != 0 ){
-	    
-	    num[i]= (int)str[i];
-	    num[i] = (num[i] + k )  ;
-	    
+	    num[i]= (int)str[i] ;
+	    num[i] = (((num[i] - 65 ) + k)%26) + 65 ; //formula to change ascii to 0 then add the key then apply modulus 
 	   
-	    printf("%c ", num[i]);
+	    printf("%c ", num[i]);           //type cast the ascii numbers into characters 
 	    
 	    i++;
     }
-	
 return 0;
 
 }
