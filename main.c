@@ -10,8 +10,11 @@ int main()
 	//char str[]= "BENDAY"; //hardcoded thing
 	int i=0;
 	int num[100];
-	int k=2;
+	int k;
 	char str[100];
+	
+	printf("Enter the encryption key = ");
+	scanf("%d", &k);
 	 
  input = fopen("input.txt", "r");
  
@@ -28,8 +31,10 @@ int main()
      
  }
 	
+	
 
-	printf("Encryption key = %d\n", k);                  // NOTE: on ascii the capital A starts from 65 and goes until 90
+	
+	printf("Encryption key = %d\n", k);                  // NOTE: on ascii the capital A starts from 65 and goes until 901
 	printf("Encrypted Message: ");
 	
 	for (int i=0; str[i] != '\0'; i++) {
@@ -43,7 +48,7 @@ int main()
 
     printf("\n\nDecryption key = %d\n", k);                  // NOTE: on ascii the capital A starts from 65 and goes until 90
 	printf("Decrypted Message: ");
-    char str2[]= "DGPFCA"; //hardcoded thing
+    char str2[]= "EHQGDB"; //hardcoded thing
 	int j=0;
 	int num2[j];
 	
@@ -59,6 +64,7 @@ int main()
 	    
 	    j++;
     }       //type cast the ascii numbers into characters 
+
 
 return 0;
 }
