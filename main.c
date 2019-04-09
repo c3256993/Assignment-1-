@@ -23,24 +23,42 @@ int main()
      }
      // probally fo call to function here eg. doEncryption(&c)
      
-     printf("%c", str[i]);
+    // printf("%c", str[i]);
      i++;
      
  }
 	
 
-	// on ascii the capital A starts from 65 and goes until 90
+	printf("Encryption key = %d\n", k);                  // NOTE: on ascii the capital A starts from 65 and goes until 90
+	printf("Encrypted Message: ");
 	
 	for (int i=0; str[i] != '\0'; i++) {
 	    
 	    num[i]= str[i];
 	    num[i] = (((num[i] - 65 ) + k)%26) + 65 ; //formula to change ascii to 0 then add the key then apply modulus 
 	    
-	    printf("\n%c ", num[i]);           //type cast the ascii numbers into characters 
+	    printf("%c", num[i]);           //type cast the ascii numbers into characters 
 	      
     }
 
-
+    printf("\n\nDecryption key = %d\n", k);                  // NOTE: on ascii the capital A starts from 65 and goes until 90
+	printf("Decrypted Message: ");
+    char str2[]= "DGPFCA"; //hardcoded thing
+	int j=0;
+	int num2[j];
+	
+	
+	// on ascii the capital A starts from 65 and goes until 90
+	
+	while (str2[j] != '\0' ) {
+	    
+	    num2[j]= (int)str2[j] ;
+	    num2[j] = (((num2[j] - 65 ) - k + 26)%26) + 65 ; //formula to change ascii to 0 then add the key then apply modulus 
+	   
+	    printf("%c", num2[j]);           //type cast the ascii numbers into characters 
+	    
+	    j++;
+    }       //type cast the ascii numbers into characters 
 
 return 0;
 }
