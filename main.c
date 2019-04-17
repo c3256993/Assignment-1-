@@ -1,6 +1,13 @@
 #include<stdio.h>
 #include <string.h>
 
+
+//Declaring of functions 
+void EncryptCesar (char *str[]);
+void DecryptCesar (void);
+
+
+
 int main()
 
 {
@@ -9,18 +16,21 @@ int main()
  
 	//char str[]= "BENDAY"; //hardcoded thing
 	int i=0;
-	int num[100];
-	int k;
-	char str[100];
+	//int num[100];
+	//int k =3;
+	char *str[100];
+	int operation;
 	
-	printf("Enter the encryption key = ");
-	scanf("%d", &k);
+	
+	
+	//printf("Enter the encryption key = ");
+	//scanf("%d", &k);
 	 
  input = fopen("input.txt", "r");
  
  while(1){
      
-     fscanf(input, "%c", &str[i]); //read character BUT change c to an array like message[i0
+     fscanf(input, "%c", &str[i]); //read character BUT change c to an array 
      if (feof(input)){
          break;
      }
@@ -30,41 +40,77 @@ int main()
      i++;
      
  }
-	
-	
+	/*switch stament for user freindly interface
+	printf("Type 0 to Encrypt rotation cipher:\n");
+	printf("Type 1 to Decrypt rotation cipher:\n");
+	printf("Type 2 to Encrypt subsitition cipher:\n");
+	printf("Type 3 to Encrypt subsitution cipher:\n");
+	switch (operation){
+	    case 0:
+	   */ //call to encryption function  
+        EncryptCesar(&str[i]);
+	   // break;
+	   
+	 //  case 1:
+	   //call to decrpt function
+       DecryptCesar();
+      /* break;
+       
+       default: printf("Wrong operation/n ");
+	}
+	*/
+return 0;
+}
 
+
+
+
+
+//fisrt function
+void EncryptCesar (char *str[]){
+    
+    int i=0;
+	int num[100];
+	int k =3;    
 	
 	printf("Encryption key = %d\n", k);                  // NOTE: on ascii the capital A starts from 65 and goes until 901
 	printf("Encrypted Message: ");
 	
-	for (int i=0; str[i] != '\0'; i++) {
+	for ( i=0; str[i] != '\0'; i++) {
 	    
-	    num[i]= str[i];
+	    num[i] = (int)str[i];
 	    num[i] = (((num[i] - 65 ) + k)%26) + 65 ; //formula to change ascii to 0 then add the key then apply modulus 
 	    
 	    printf("%c", num[i]);           //type cast the ascii numbers into characters 
 	      
     }
+    
+    return ;
+}
 
-    printf("\n\nDecryption key = %d\n", k);                  // NOTE: on ascii the capital A starts from 65 and goes until 90
-	printf("Decrypted Message: ");
-    char str2[]= "EHQGDB"; //hardcoded thing
+//second function 
+void DecryptCesar (void){
+    
+    char str2[]= "EHQQBGHC"; //hardcoded thing
 	int j=0;
 	int num2[j];
+	int k=3;
 	
+	printf("\n\nDecryption key = %d\n", k);                  // NOTE: on ascii the capital A starts from 65 and goes until 90
+	printf("Decrypted Message: ");
+    
 	
 	// on ascii the capital A starts from 65 and goes until 90
 	
 	while (str2[j] != '\0' ) {
 	    
-	    num2[j]= (int)str2[j] ;
+	    num2[j] = (int)str2[j] ;
 	    num2[j] = (((num2[j] - 65 ) - k + 26)%26) + 65 ; //formula to change ascii to 0 then add the key then apply modulus 
 	   
-	    printf("%c", num2[j]);           //type cast the ascii numbers into characters 
+	    printf("%c ", num2[j]);           //type cast the ascii numbers into characters 
 	    
 	    j++;
     }       //type cast the ascii numbers into characters 
 
-
-return 0;
+return;
 }
