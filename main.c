@@ -3,7 +3,7 @@
 
 
 //Declaring of functions 
-void EncryptCesar (char *str[]);
+void EncryptCesar (char *str);
 void DecryptCesar (void);
 
 
@@ -12,14 +12,14 @@ int main()
 
 {
 	
-	FILE*input;
+	FILE *input;
  
 	//char str[]= "BENDAY"; //hardcoded thing
 	int i=0;
 	//int num[100];
 	//int k =3;
 	char *str[100];
-	int operation;
+	//int operation;
 	
 	
 	
@@ -30,7 +30,7 @@ int main()
  
  while(1){
      
-     fscanf(input, "%c", &str[i]); //read character BUT change c to an array 
+     fscanf(input, "%c", str[i]); //read character BUT change c to an array 
      if (feof(input)){
          break;
      }
@@ -48,7 +48,7 @@ int main()
 	switch (operation){
 	    case 0:
 	   */ //call to encryption function  
-        EncryptCesar(&str[i]);
+        EncryptCesar(*str);
 	   // break;
 	   
 	 //  case 1:
@@ -67,7 +67,7 @@ return 0;
 
 
 //fisrt function
-void EncryptCesar (char *str[]){
+char EncryptCesar (char *str){
     
     int i=0;
 	int num[100];
@@ -78,14 +78,14 @@ void EncryptCesar (char *str[]){
 	
 	for ( i=0; str[i] != '\0'; i++) {
 	    
-	    num[i] = (int)str[i];
+	    num[i] = str[i];
 	    num[i] = (((num[i] - 65 ) + k)%26) + 65 ; //formula to change ascii to 0 then add the key then apply modulus 
 	    
-	    printf("%c", num[i]);           //type cast the ascii numbers into characters 
+	    //printf("%c", num[i]);           //type cast the ascii numbers into characters 
 	      
     }
     
-    return ;
+    return num ;
 }
 
 //second function 
@@ -107,10 +107,16 @@ void DecryptCesar (void){
 	    num2[j] = (int)str2[j] ;
 	    num2[j] = (((num2[j] - 65 ) - k + 26)%26) + 65 ; //formula to change ascii to 0 then add the key then apply modulus 
 	   
-	    printf("%c ", num2[j]);           //type cast the ascii numbers into characters 
+	    printf("%c", num2[j]);           //type cast the ascii numbers into characters 
 	    
 	    j++;
     }       //type cast the ascii numbers into characters 
 
 return;
 }
+
+
+
+
+
+
