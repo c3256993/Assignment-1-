@@ -16,30 +16,30 @@ int main()
  
 	//char str[]= "BENDAY"; //hardcoded thing
 	int i=0;
-	//int num[100];
+//	char num[100];
 	//int k =3;
-	char *str[100];
+	char str[100];
 	//int operation;
 	
 	
-	
+
 	//printf("Enter the encryption key = ");
 	//scanf("%d", &k);
 	 
  input = fopen("input.txt", "r");
  
- while(1){
+ 
+ while(!feof(input)){
      
-     fscanf(input, "%c", str[i]); //read character BUT change c to an array 
-     if (feof(input)){
-         break;
+     fscanf(input, "%c", &str[i]); //read character BUT change c to an array 
+    i++;  
      }
      // probally fo call to function here eg. doEncryption(&c)
      
-    // printf("%c", str[i]);
-     i++;
+   //  printf("%s", str);
+    
      
- }
+ EncryptCesar(*str);
 	/*switch stament for user freindly interface
 	printf("Type 0 to Encrypt rotation cipher:\n");
 	printf("Type 1 to Decrypt rotation cipher:\n");
@@ -47,14 +47,14 @@ int main()
 	printf("Type 3 to Encrypt subsitution cipher:\n");
 	switch (operation){
 	    case 0:
-	   */ //call to encryption function  
-        EncryptCesar(*str);
+	    //call to encryption function  
+        
 	   // break;
-	   
+	   printf("%c", num[i]);
 	 //  case 1:
 	   //call to decrpt function
-       DecryptCesar();
-      /* break;
+     //  DecryptCesar();
+       break;
        
        default: printf("Wrong operation/n ");
 	}
@@ -67,29 +67,32 @@ return 0;
 
 
 //fisrt function
-char EncryptCesar (char *str){
-    
+void EncryptCesar (char *str){
+   
     int i=0;
 	int num[100];
 	int k =3;    
+	char string[] = "ABCD";
+	
+	//printf("%s", str);
 	
 	printf("Encryption key = %d\n", k);                  // NOTE: on ascii the capital A starts from 65 and goes until 901
 	printf("Encrypted Message: ");
 	
-	for ( i=0; str[i] != '\0'; i++) {
+	for ( i=0; string[i] != '\0'; i++) {
 	    
-	    num[i] = str[i];
+	    num[i] = string[i];
 	    num[i] = (((num[i] - 65 ) + k)%26) + 65 ; //formula to change ascii to 0 then add the key then apply modulus 
 	    
-	    //printf("%c", num[i]);           //type cast the ascii numbers into characters 
+	    printf("%c", num[i]);           //type cast the ascii numbers into characters 
 	      
     }
     
-    return num ;
+    return ;
 }
 
 //second function 
-void DecryptCesar (void){
+/*void DecryptCesar (void){
     
     char str2[]= "EHQQBGHC"; //hardcoded thing
 	int j=0;
@@ -115,7 +118,7 @@ void DecryptCesar (void){
 return;
 }
 
-
+*/
 
 
 
