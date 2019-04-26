@@ -3,7 +3,7 @@
 
 
 //Declaring of functions 
-void EncryptCesar (char *str);
+void EncryptCesar (char str);
 void DecryptCesar (void);
 
 
@@ -67,27 +67,27 @@ return 0;
 
 
 //fisrt function
-void EncryptCesar (char *str){
+void EncryptCesar (char str){
    
-    int i=0;
-	int num[100];
-	int k =3;    
-	char string[] = "ABCD";
+    //int i=0;
+	//int num[100];
+	//int k =3;    
 	
-	//printf("%s", str);
 	
-	printf("Encryption key = %d\n", k);                  // NOTE: on ascii the capital A starts from 65 and goes until 901
+	printf("%s", str);
+	
+	/*printf("Encryption key = %d\n", k);                  // NOTE: on ascii the capital A starts from 65 and goes until 901
 	printf("Encrypted Message: ");
 	
-	for ( i=0; string[i] != '\0'; i++) {
+	for ( i=0; str[i] != '\0'; i++) {
 	    
-	    num[i] = string[i];
+	    num[i] = str[i];
 	    num[i] = (((num[i] - 65 ) + k)%26) + 65 ; //formula to change ascii to 0 then add the key then apply modulus 
 	    
 	    printf("%c", num[i]);           //type cast the ascii numbers into characters 
 	      
     }
-    
+    */
     return ;
 }
 
