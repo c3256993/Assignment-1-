@@ -1,3 +1,12 @@
+/*Name: Benjamin Day
+* Student No : 3256993
+* Course : ENG1003
+* Program : Assignment PA1
+* Date due: 29th April 2018
+* Description : This Program takes input messages from text files and encrypts and decrypts these messages 
+* using roation and substitution.
+*/
+
 #include <stdio.h>
 #include <string.h>
 
@@ -13,54 +22,58 @@ char DecryptSub(char *enigma2);
 int main()
 
 {
-	
-	FILE *input;
+	// stream is kept in a variable of type FILE read as a pointer to FILE* 
+	FILE *input;             
 	FILE *input2;
 	FILE *inputsub;
 	FILE *inputsub2;
 	
-	
+	//initilising all the couters for openingn each file
 	int i=0;
 	int j=0;
 	int m=0;
 	int n=0;
 
+    //declaring all the stings when the read files will be saved
 	char str[100];
 	char str2[100];
 	char enigma[100];
 	char enigma2[100];
 
- input = fopen("input.txt", "r");
- input2 = fopen("input2.txt", "r");
- inputsub = fopen("inputsub.txt", "r");
- inputsub2 = fopen("inputsub2.txt", "r");
+    //opening files with the fopen function and assigning them to the variable
+    input = fopen("input.txt", "r");
+    input2 = fopen("input2.txt", "r");
+    inputsub = fopen("inputsub.txt", "r");
+    inputsub2 = fopen("inputsub2.txt", "r");
  
+ //while loops using the fscanf function to scan each character of the message 
+ //and assign it to a string
  while(!feof(input)){
      
-     fscanf(input, "%c", &str[i]); //read character BUT change c to an array 
+     fscanf(input, "%c", &str[i]);  
     i++;  
      }
      
  while(!feof(input2)){
      
-     fscanf(input2, "%c", &str2[j]); //read character BUT change c to an array 
+     fscanf(input2, "%c", &str2[j]);  
     j++;  
      }
      
  while(!feof(inputsub)){
      
-     fscanf(inputsub, "%c", &enigma[m]); //read character BUT change c to an array 
+     fscanf(inputsub, "%c", &enigma[m]);  
     m++;  
      }
    
   while(!feof(inputsub2)){
      
-     fscanf(inputsub2, "%c", &enigma2[n]); //read character BUT change c to an array 
+     fscanf(inputsub2, "%c", &enigma2[n]);  
     n++;  
      } 
    
-   //Call to functions 
-    printf("---------CESAR CIPHER------------- \n\n");
+   //Call to all the functions with print statment to make it look good 
+    printf("---------ROTATION CIPHER------------- \n\n");
     EncryptCesar(str);
     DecryptCesar(str2);
     printf("\n\n\n--------SUBSTITUTION CIPHER--------- ");
@@ -90,10 +103,10 @@ return 0;
 }
 
 
-
-
-
-//fisrt function
+/* This is a function for encrypting a roation cipher
+ * input:the message as a sting that need to be encrypted
+ * outputs: prints to std.n
+ */
 char EncryptCesar (char *str){
    
     int i=0;
@@ -119,7 +132,10 @@ char EncryptCesar (char *str){
 
 
 
-//second function 
+/* This is a function for decrypting a roation cipher
+ * input:the message as a sting that need to be decrypted
+ * outputs: prints to std.n
+ */
 char DecryptCesar (char *str2){
     
 	int j=0;
@@ -144,7 +160,10 @@ char DecryptCesar (char *str2){
 return num2[j];
 }
  
-
+/* This is a function for encrypting a substitution cipher
+ * input:the message as a sting that need to be encrypted
+ * outputs: prints to std.n
+ */
 char EncryptSub(char *enigma){
     
     
@@ -177,6 +196,10 @@ char EncryptSub(char *enigma){
     
 }
 
+/* This is a function for decrypting a substitution cipher 
+ * input:the message as a sting that need to be decrypted
+ * outputs: prints to std.n
+ */
 char DecryptSub(char *enigma2){
     
     int i=0;
