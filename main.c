@@ -118,10 +118,10 @@ char EncryptCesar (char *str){
 	printf("Encryption key = %d\n", k);                  // NOTE: on ascii the capital A starts from 65 and goes until 901
 	printf("Encrypted Message: ");
 	
-	for ( i=0; str[i] != 0; i++) {
+	for ( i=0; str[i] != 0; i++) {          //for loop that loops until it hits the null character at the end of the string
 	    
 	    num[i] = str[i];
-	    num[i] = (((num[i] - 65 ) + k)%26) + 65 ; //formula to change ascii to 0 then add the key then apply modulus 
+	    num[i] = (((num[i] - 65 ) + k)%26) + 65 ; //formula to change ascii to 0 then add the key then apply modulus then adds 65 to get it back to capitlas in ascii
 	    
 	    printf("%c", num[i]);           //type cast the ascii numbers into characters 
 	      
@@ -142,13 +142,11 @@ char DecryptCesar (char *str2){
 	int num2[100];
 	int k=3;
 	
-	printf("\n\nDecryption key = %d\n", k);                  // NOTE: on ascii the capital A starts from 65 and goes until 90
+	printf("\n\nDecryption key = %d\n", k);                  
 	printf("Decrypted Message: ");
     
 	
-	// on ascii the capital A starts from 65 and goes until 90
-	
-	while (str2[j] != '\0' ) {
+	while (str2[j] != '\0' ) {       //while loop that loops until it hits the null character at the end of the string
 	    
 	    num2[j] = (int)str2[j] ;
 	    num2[j] = (((num2[j] - 65 ) - k + 26)%26) + 65 ; //formula to change ascii to 0 then add the key then apply modulus 
@@ -176,7 +174,7 @@ char EncryptSub(char *enigma){
     
     printf("\n\nEncrypted Message: ");
    
-    while(enigma[x] != 0){ 
+    while(enigma[x] != 0){             //while loop that loops until it hits the null character at the end of the string
         
         if(alphabet[y] == enigma[x]){
         
@@ -210,9 +208,9 @@ char DecryptSub(char *enigma2){
     
     printf("\nDecrypted Message: ");
    
-    while(enigma2[x] != 0){ 
+    while(enigma2[x] != 0){         //while loop that loops until it hits the null character at the end of the string
         
-        if(key[i] == enigma2[x]){
+        if(key[i] == enigma2[x]){      
         
             output[x] = alphabet[i];
             printf("%c", output[x] );
