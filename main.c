@@ -1,10 +1,12 @@
-#include<stdio.h>
+#include <stdio.h>
 #include <string.h>
 
 
 //Declaring of functions 
-void EncryptCesar (char str);
-void DecryptCesar (void);
+char EncryptCesar (char *str);
+char DecryptCesar (char *str2);
+char EncryptSub(char *enigma);
+char DecryptSub(char *enigma2);
 
 
 
@@ -13,33 +15,56 @@ int main()
 {
 	
 	FILE *input;
- 
-	//char str[]= "BENDAY"; //hardcoded thing
+	FILE *input2;
+	FILE *inputsub;
+	FILE *inputsub2;
+	
+	
 	int i=0;
-//	char num[100];
-	//int k =3;
-	char str[100];
-	//int operation;
-	
-	
+	int j=0;
+	int m=0;
+	int n=0;
 
-	//printf("Enter the encryption key = ");
-	//scanf("%d", &k);
-	 
+	char str[100];
+	char str2[100];
+	char enigma[100];
+	char enigma2[100];
+
  input = fopen("input.txt", "r");
- 
+ input2 = fopen("input2.txt", "r");
+ inputsub = fopen("inputsub.txt", "r");
+ inputsub2 = fopen("inputsub2.txt", "r");
  
  while(!feof(input)){
      
      fscanf(input, "%c", &str[i]); //read character BUT change c to an array 
     i++;  
      }
-     // probally fo call to function here eg. doEncryption(&c)
      
-   //  printf("%s", str);
-    
+ while(!feof(input2)){
      
- EncryptCesar(*str);
+     fscanf(input2, "%c", &str2[j]); //read character BUT change c to an array 
+    j++;  
+     }
+     
+ while(!feof(inputsub)){
+     
+     fscanf(inputsub, "%c", &enigma[m]); //read character BUT change c to an array 
+    m++;  
+     }
+   
+  while(!feof(inputsub2)){
+     
+     fscanf(inputsub2, "%c", &enigma2[n]); //read character BUT change c to an array 
+    n++;  
+     } 
+   
+   //Call to functions 
+    printf("%c",EncryptCesar(str));
+    printf("%c",DecryptCesar(str2));
+    printf("%c",EncryptSub(enigma)); 
+    printf("%c",DecryptSub(enigma2));
+ 
 	/*switch stament for user freindly interface
 	printf("Type 0 to Encrypt rotation cipher:\n");
 	printf("Type 1 to Decrypt rotation cipher:\n");
@@ -67,16 +92,15 @@ return 0;
 
 
 //fisrt function
-void EncryptCesar (char str){
+char EncryptCesar (char *str){
    
-    //int i=0;
-	//int num[100];
-	//int k =3;    
+    int i=0;
+	int num[100];
+	int k =3;    
 	
 	
-	printf("%s", str);
 	
-	/*printf("Encryption key = %d\n", k);                  // NOTE: on ascii the capital A starts from 65 and goes until 901
+	printf("Encryption key = %d\n", k);                  // NOTE: on ascii the capital A starts from 65 and goes until 901
 	printf("Encrypted Message: ");
 	
 	for ( i=0; str[i] != '\0'; i++) {
@@ -87,16 +111,17 @@ void EncryptCesar (char str){
 	    printf("%c", num[i]);           //type cast the ascii numbers into characters 
 	      
     }
-    */
-    return ;
+    
+    return num[i];
 }
 
+
+
 //second function 
-/*void DecryptCesar (void){
+char DecryptCesar (char *str2){
     
-    char str2[]= "EHQQBGHC"; //hardcoded thing
 	int j=0;
-	int num2[j];
+	int num2[100];
 	int k=3;
 	
 	printf("\n\nDecryption key = %d\n", k);                  // NOTE: on ascii the capital A starts from 65 and goes until 90
@@ -115,10 +140,72 @@ void EncryptCesar (char str){
 	    j++;
     }       //type cast the ascii numbers into characters 
 
-return;
+return num2[j];
 }
 
-*/
+
+char EncryptSub(char *enigma){
+    
+    
+    int y=0;
+    int x=0;
+    char alphabet[]="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    char key[]="QWERTYUIOPASDFGHJKLZXCVBNM";
+    //char input[]="BENNYDEEZA";                          //so output should be  - WTFFN
+    char output[100];
+    
+    printf("\n\nEncrypted Message: ");
+   
+    while(enigma[x] != 0){ 
+        
+        if(alphabet[y] == enigma[x]){
+        
+            output[x] = key[y];
+            printf("%c", output[x] );
+            x++;
+            y=0;
+        }
+        
+        else {
+         y++;
+        }
+        
+    }
+    
+    return output[x];
+    
+}
+
+char DecryptSub(char *enigma2){
+    
+    int i=0;
+    int x=0;
+    char alphabet[]="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    char key[]="QWERTYUIOPASDFGHJKLZXCVBNM";
+    //char input[]="WTFFNRTTMQ";                          //so output should be  - WTFFN
+    char output[100];
+    
+    printf("\nDecrypted Message: ");
+   
+    while(enigma2[x] != 0){ 
+        
+        if(key[i] == enigma2[x]){
+        
+            output[x] = alphabet[i];
+            printf("%c", output[x] );
+            x++;
+            i=0;
+        }
+        
+        else {
+         i++;
+        }
+        
+    }
+    
+    return output[x];
+    
+}
 
 
 
