@@ -60,10 +60,12 @@ int main()
      } 
    
    //Call to functions 
-    printf("%c",EncryptCesar(str));
-    printf("%c",DecryptCesar(str2));
-    printf("%c",EncryptSub(enigma)); 
-    printf("%c",DecryptSub(enigma2));
+    printf("---------CESAR CIPHER------------- \n\n");
+    EncryptCesar(str);
+    DecryptCesar(str2);
+    printf("\n\n\n--------SUBSTITUTION CIPHER--------- ");
+    EncryptSub(enigma); 
+    DecryptSub(enigma2);
  
 	/*switch stament for user freindly interface
 	printf("Type 0 to Encrypt rotation cipher:\n");
@@ -83,7 +85,7 @@ int main()
        
        default: printf("Wrong operation/n ");
 	}
-	*/
+*/
 return 0;
 }
 
@@ -103,7 +105,7 @@ char EncryptCesar (char *str){
 	printf("Encryption key = %d\n", k);                  // NOTE: on ascii the capital A starts from 65 and goes until 901
 	printf("Encrypted Message: ");
 	
-	for ( i=0; str[i] != '\0'; i++) {
+	for ( i=0; str[i] != 0; i++) {
 	    
 	    num[i] = str[i];
 	    num[i] = (((num[i] - 65 ) + k)%26) + 65 ; //formula to change ascii to 0 then add the key then apply modulus 
@@ -138,11 +140,10 @@ char DecryptCesar (char *str2){
 	    printf("%c", num2[j]);           //type cast the ascii numbers into characters 
 	    
 	    j++;
-    }       //type cast the ascii numbers into characters 
-
+    }       
 return num2[j];
 }
-
+ 
 
 char EncryptSub(char *enigma){
     
@@ -151,7 +152,7 @@ char EncryptSub(char *enigma){
     int x=0;
     char alphabet[]="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     char key[]="QWERTYUIOPASDFGHJKLZXCVBNM";
-    //char input[]="BENNYDEEZA";                          //so output should be  - WTFFN
+    
     char output[100];
     
     printf("\n\nEncrypted Message: ");
@@ -182,7 +183,6 @@ char DecryptSub(char *enigma2){
     int x=0;
     char alphabet[]="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     char key[]="QWERTYUIOPASDFGHJKLZXCVBNM";
-    //char input[]="WTFFNRTTMQ";                          //so output should be  - WTFFN
     char output[100];
     
     printf("\nDecrypted Message: ");
