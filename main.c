@@ -33,6 +33,8 @@ int main()
 	int j=0;
 	int m=0;
 	int n=0;
+	
+	int operation;
 
     //declaring all the stings when the read files will be saved
 	char str[100];
@@ -72,33 +74,44 @@ int main()
     n++;  
      } 
    
-   //Call to all the functions with print statment to make it look good 
-    printf("---------ROTATION CIPHER------------- \n\n");
-    EncryptCesar(str);
-    DecryptCesar(str2);
-    printf("\n\n\n--------SUBSTITUTION CIPHER--------- ");
-    EncryptSub(enigma); 
-    DecryptSub(enigma2);
  
-	/*switch stament for user freindly interface
-	printf("Type 0 to Encrypt rotation cipher:\n");
-	printf("Type 1 to Decrypt rotation cipher:\n");
-	printf("Type 2 to Encrypt subsitition cipher:\n");
-	printf("Type 3 to Encrypt subsitution cipher:\n");
+	//switch stament for user freindly interface
+	printf("Type 1 to Encrypt rotation cipher:\n");
+	printf("Type 2 to Decrypt rotation cipher:\n");
+	printf("Type 3 to Encrypt subsitition cipher:\n");
+	printf("Type 4 to Encrypt subsitution cipher:\n");
+	
+	scanf("%d", &operation);
+	
+	
 	switch (operation){
-	    case 0:
-	    //call to encryption function  
-        
-	   // break;
-	   printf("%c", num[i]);
-	 //  case 1:
-	   //call to decrpt function
-     //  DecryptCesar();
-       break;
+	    case 1:
+	    printf("\n\n---------ROTATION CIPHER------------- ");
+        EncryptCesar(str);  
+        printf("\n\n");
+        break;
+	   
+	    case 2:
+	    printf("\n\n---------ROTATION CIPHER------------- ");
+        DecryptCesar(str2);
+        printf("\n\n");
+        break;
        
-       default: printf("Wrong operation/n ");
+        case 3:
+        printf("\n\n--------SUBSTITUTION CIPHER--------- ");
+        EncryptSub(enigma);
+        printf("\n\n");
+        break;
+        
+        case 4:
+        printf("\n\n--------SUBSTITUTION CIPHER--------- ");
+        DecryptSub(enigma2);
+        printf("\n\n");
+        break;
+       
+       
 	}
-*/
+
 return 0;
 }
 
@@ -154,8 +167,10 @@ char DecryptCesar (char *str2){
 	    printf("%c", num2[j]);           //type cast the ascii numbers into characters 
 	    
 	    j++;
-    }       
+    } 
+   
 return num2[j];
+ 
 }
  
 /* This is a function for encrypting a substitution cipher
