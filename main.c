@@ -14,8 +14,8 @@
 //Declaring of functions 
 char EncryptCesar (char *str);
 char DecryptCesar (char *str2);
-char EncryptSub(char *enigma);
-char DecryptSub(char *enigma2);
+char EncryptSub(char *enigma, char *k);
+char DecryptSub(char *enigma2, char *k);
 
 
 
@@ -28,11 +28,16 @@ int main()
 	FILE *inputsub;
 	FILE *inputsub2;
 	
+	FILE *key2;
+	
 	//initilising all the couters for openingn each file
 	int i=0;
 	int j=0;
 	int m=0;
 	int n=0;
+	
+	int p=0;
+	
 	
 	int operation;
 
@@ -41,12 +46,16 @@ int main()
 	char str2[100];
 	char enigma[100];
 	char enigma2[100];
+	
+	char k[100];
 
     //opening files with the fopen function and assigning them to the variable
     input = fopen("input.txt", "r");
     input2 = fopen("input2.txt", "r");
     inputsub = fopen("inputsub.txt", "r");
     inputsub2 = fopen("inputsub2.txt", "r");
+    
+    key2 = fopen("key2.txt", "r");
  
  //while loops using the fscanf function to scan each character of the message 
  //and assign it to a string
@@ -74,6 +83,12 @@ int main()
     n++;  
      } 
    
+   while(!feof(key2)){
+     
+     fscanf(key2, "%c", &k[p]);  
+    p++;  
+     } 
+   
  
 	//switch stament for user freindly interface
 	printf("Type 1 to Encrypt rotation cipher:\n");
@@ -86,26 +101,26 @@ int main()
 	
 	switch (operation){
 	    case 1:
-	    printf("\n\n---------ROTATION CIPHER------------- ");
+	    printf("\n\n---------ROTATION CIPHER-------------\n\n ");
         EncryptCesar(str);  
         printf("\n\n");
         break;
 	   
 	    case 2:
-	    printf("\n\n---------ROTATION CIPHER------------- ");
+	    printf("\n\n---------ROTATION CIPHER--------------\n\n ");
         DecryptCesar(str2);
         printf("\n\n");
         break;
        
         case 3:
-        printf("\n\n--------SUBSTITUTION CIPHER--------- ");
-        EncryptSub(enigma);
+        printf("\n\n--------SUBSTITUTION CIPHER---------\n\n ");
+        EncryptSub(enigma, k);
         printf("\n\n");
         break;
         
         case 4:
-        printf("\n\n--------SUBSTITUTION CIPHER--------- ");
-        DecryptSub(enigma2);
+        printf("\n\n--------SUBSTITUTION CIPHER---------\n\n ");
+        DecryptSub(enigma2, k);
         printf("\n\n");
         break;
        
@@ -177,13 +192,13 @@ return num2[j];
  * input:the message as a sting that need to be encrypted
  * outputs: prints to std.n
  */
-char EncryptSub(char *enigma){
-    
+char EncryptSub(char *enigma, char *k){
+     
     
     int y=0;
     int x=0;
     char alphabet[]="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    char key[]="QWERTYUIOPASDFGHJKLZXCVBNM";
+    
     
     char output[100];
     
@@ -193,7 +208,7 @@ char EncryptSub(char *enigma){
         
         if(alphabet[y] == enigma[x]){
         
-            output[x] = key[y];
+            output[x] = k[y];
             printf("%c", output[x] );
             x++;
             y=0;
@@ -213,19 +228,18 @@ char EncryptSub(char *enigma){
  * input:the message as a sting that need to be decrypted
  * outputs: prints to std.n
  */
-char DecryptSub(char *enigma2){
+char DecryptSub(char *enigma2, char *k){
     
     int i=0;
     int x=0;
     char alphabet[]="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    char key[]="QWERTYUIOPASDFGHJKLZXCVBNM";
     char output[100];
     
     printf("\nDecrypted Message: ");
    
     while(enigma2[x] != 0){         //while loop that loops until it hits the null character at the end of the string
         
-        if(key[i] == enigma2[x]){      
+        if(k[i] == enigma2[x]){      
         
             output[x] = alphabet[i];
             printf("%c", output[x] );
