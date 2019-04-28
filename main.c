@@ -18,11 +18,10 @@ char EncryptSub(char *enigma, char *k);
 char DecryptSub(char *enigma2, char *k);
 
 
-
 int main()
 
 {
-	// stream is kept in a variable of type FILE read as a pointer to FILE* 
+	// these are the streams that are kept in a variable of type FILE read as a pointer to FILE* 
 	FILE *input;             
 	FILE *input2;
 	FILE *inputsub;
@@ -35,10 +34,9 @@ int main()
 	int j=0;
 	int m=0;
 	int n=0;
-	
 	int p=0;
 	
-	
+	//initilising the variable for the switch operation
 	int operation;
 
     //declaring all the stings when the read files will be saved
@@ -46,7 +44,6 @@ int main()
 	char str2[100];
 	char enigma[100];
 	char enigma2[100];
-	
 	char k[100];
 
     //opening files with the fopen function and assigning them to the variable
@@ -54,74 +51,73 @@ int main()
     input2 = fopen("input2.txt", "r");
     inputsub = fopen("inputsub.txt", "r");
     inputsub2 = fopen("inputsub2.txt", "r");
-    
     key2 = fopen("key2.txt", "r");
  
- //while loops using the fscanf function to scan each character of the message 
- //and assign it to a string
+ //while loops using the fscanf function to scan each character of the message and assign it to a string
  while(!feof(input)){
      
-     fscanf(input, "%c", &str[i]);  
-    i++;  
+     fscanf(input, "%c", &str[i]);  // using the scan function to scan from a file 
+    i++;                            //increased counter by one 
      }
      
  while(!feof(input2)){
      
-     fscanf(input2, "%c", &str2[j]);  
-    j++;  
+     fscanf(input2, "%c", &str2[j]);  // using the scan function to scan from a file 
+    j++;                              //increased counter by one   
      }
      
  while(!feof(inputsub)){
      
-     fscanf(inputsub, "%c", &enigma[m]);  
-    m++;  
+     fscanf(inputsub, "%c", &enigma[m]);  // using the scan function to scan from a file 
+    m++;                                  //increased counter by one 
      }
    
   while(!feof(inputsub2)){
      
-     fscanf(inputsub2, "%c", &enigma2[n]);  
-    n++;  
+     fscanf(inputsub2, "%c", &enigma2[n]);  // using the scan function to scan from a file 
+    n++;                                    //increased counter by one 
      } 
    
    while(!feof(key2)){
      
-     fscanf(key2, "%c", &k[p]);  
-    p++;  
+     fscanf(key2, "%c", &k[p]);  // using the scan function to scan from a file 
+    p++;                         //increased counter by one 
      } 
    
  
-	//switch stament for user freindly interface
+	//display for switch stament for user freindly interface
 	printf("Type 1 to Encrypt rotation cipher:\n");
 	printf("Type 2 to Decrypt rotation cipher:\n");
 	printf("Type 3 to Encrypt subsitition cipher:\n");
 	printf("Type 4 to Encrypt subsitution cipher:\n");
 	
-	scanf("%d", &operation);
+	scanf("%d", &operation); //scans the users input and assigns to variable 'operation'
 	
-	
+	//switch statment with 4 cases to determin what function the user wants to use, the break exits the statment 
 	switch (operation){
 	    case 1:
-	    printf("\n\n---------ROTATION CIPHER-------------\n\n ");
-        EncryptCesar(str);  
+	    printf("\n\n---------ROTATION CIPHER-------------\n ");
+        EncryptCesar(str);                                            //call to function with one input varaible 
         printf("\n\n");
         break;
 	   
 	    case 2:
-	    printf("\n\n---------ROTATION CIPHER--------------\n\n ");
-        DecryptCesar(str2);
+	    printf("\n\n---------ROTATION CIPHER--------------\n ");
+        DecryptCesar(str2);                                            //call to function with one input variable
         printf("\n\n");
         break;
        
         case 3:
-        printf("\n\n--------SUBSTITUTION CIPHER---------\n\n ");
-        EncryptSub(enigma, k);
+        printf("\n\n--------SUBSTITUTION CIPHER---------\n ");
+        EncryptSub(enigma, k);                                            //call to function with 2 input variables
         printf("\n\n");
         break;
         
         case 4:
-        printf("\n\n--------SUBSTITUTION CIPHER---------\n\n ");
-        DecryptSub(enigma2, k);
+        printf("\n\n--------SUBSTITUTION CIPHER---------\n ");
+        DecryptSub(enigma2, k);                                            //call to function with 2 input variables
         printf("\n\n");
+       
         break;
        
        
@@ -137,9 +133,9 @@ return 0;
  */
 char EncryptCesar (char *str){
    
-    int i=0;
-	int num[100];
-	int k =3;    
+    int i=0;       //counter
+	int num[100];  //second array for printing 
+	int k =3;      //harcoded key
 	
 	
 	
@@ -155,7 +151,7 @@ char EncryptCesar (char *str){
 	      
     }
     
-    return num[i];
+    return num[i];       //returns encrypted message
 }
 
 
@@ -166,9 +162,9 @@ char EncryptCesar (char *str){
  */
 char DecryptCesar (char *str2){
     
-	int j=0;
-	int num2[100];
-	int k=3;
+	int j=0;       //counter
+	int num2[100]; //second array to print
+	int k=3;       //harcoded key
 	
 	printf("\n\nDecryption key = %d\n", k);                  
 	printf("Decrypted Message: ");
@@ -184,7 +180,7 @@ char DecryptCesar (char *str2){
 	    j++;
     } 
    
-return num2[j];
+return num2[j];        //returns decrypted message
  
 }
  
@@ -195,32 +191,33 @@ return num2[j];
 char EncryptSub(char *enigma, char *k){
      
     
-    int y=0;
-    int x=0;
-    char alphabet[]="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    int y=0; //variable used to single out position in string 
+    int x=0; //variable used to single out position in string
+    
+    char alphabet[]="ABCDEFGHIJKLMNOPQRSTUVWXYZ";    //the alphabet as a sting used to reference against message
     
     
-    char output[100];
+    char output[100];   //declaring output string that gets printed
     
     printf("\n\nEncrypted Message: ");
    
     while(enigma[x] != 0){             //while loop that loops until it hits the null character at the end of the string
         
-        if(alphabet[y] == enigma[x]){
+        if(alphabet[y] == enigma[x]){  //if statement comparing the alphabet to the message 
         
-            output[x] = k[y];
-            printf("%c", output[x] );
-            x++;
-            y=0;
+            output[x] = k[y];            //if true assign output to key character
+            printf("%c", output[x] );    //print character
+            x++;                         //move on to next letter
+            y=0;                         //reset al]phabet to 0 
         }
         
         else {
-         y++;
+         y++;                //increase counter by one
         }
         
     }
     
-    return output[x];
+    return output[x];        //returns encrypted message
     
 }
 
@@ -230,30 +227,32 @@ char EncryptSub(char *enigma, char *k){
  */
 char DecryptSub(char *enigma2, char *k){
     
-    int i=0;
-    int x=0;
-    char alphabet[]="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    char output[100];
+    int i=0; //variable used to single out position in string
+    int x=0; //variable used to single out position in string
+    
+    char alphabet[]="ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //the alphabet as a sting used to reference against message
+    
+    char output[100]; //declaring output string that gets printed
     
     printf("\nDecrypted Message: ");
    
     while(enigma2[x] != 0){         //while loop that loops until it hits the null character at the end of the string
         
-        if(k[i] == enigma2[x]){      
+        if(k[i] == enigma2[x]){      //if statement comparing the alphabet to the message 
         
-            output[x] = alphabet[i];
-            printf("%c", output[x] );
-            x++;
-            i=0;
+            output[x] = alphabet[i];    //if true assign output to alphabet character
+            printf("%c", output[x] );   //print character
+            x++;                        //move on to next letter 
+            i=0;                        //reset al]phabet to 0 
         }
         
         else {
-         i++;
+         i++;                //increase counter by one
         }
         
     }
     
-    return output[x];
+    return output[x];        //returns decrypted message
     
 }
 
