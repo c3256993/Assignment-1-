@@ -89,7 +89,7 @@ int main()
 	printf("Type 1 to Encrypt rotation cipher:\n");
 	printf("Type 2 to Decrypt rotation cipher:\n");
 	printf("Type 3 to Encrypt subsitition cipher:\n");
-	printf("Type 4 to Encrypt subsitution cipher:\n");
+	printf("Type 4 to Dencrypt subsitution cipher:\n");
 	
 	scanf("%d", &operation); //scans the users input and assigns to variable 'operation'
 	
