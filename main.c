@@ -135,11 +135,12 @@ char EncryptCesar (char *str){
    
     int i=0;       //counter
 	int num[100];  //second array for printing 
-	int k =3;      //harcoded key
+	int k=0;         //declaring the key for user input
 	
+	//user defined encryption key
+	printf("Enter Encryption key = "); 
+	scanf("%d", &k);
 	
-	
-	printf("Encryption key = %d\n", k);                  // NOTE: on ascii the capital A starts from 65 and goes until 901
 	printf("Encrypted Message: ");
 	
 	for ( i=0; str[i] != 0; i++) {          //for loop that loops until it hits the null character at the end of the string
@@ -164,9 +165,12 @@ char DecryptCesar (char *str2){
     
 	int j=0;       //counter
 	int num2[100]; //second array to print
-	int k=3;       //harcoded key
+	int k=0;       //initalising key for user input
 	
-	printf("\n\nDecryption key = %d\n", k);                  
+	//user defined dencryption key
+	printf("Enter Encryption key = "); 
+	scanf("%d", &k);                  
+	
 	printf("Decrypted Message: ");
     
 	
